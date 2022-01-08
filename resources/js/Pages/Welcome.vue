@@ -1,18 +1,23 @@
 <template>
-    <div>
-        <h1>Welcome To {{ appName }}</h1>
-        <Nav></Nav>
-    </div>
+  <Layout>
+    <h2 class="display-2">Welcome to Inertia Demo</h2>
+
+    <h2 class="display-2" style="margin-top: 200vh">{{ time }}</h2>
+    <Link class="btn btn-success" href="/" preserve-scroll>Refresh</Link>
+  </Layout>
 </template>
 <script>
-import Nav from '../Componets/Nav.vue';
+import { Link } from "@inertiajs/inertia-vue3";
+import Layout from "../Shared/Layout.vue";
 export default {
-    name: 'Welcome',
-    props: {
-        appName: String
-    },
-    components: {
-        Nav
-    }
-}
+  name: "Welcome",
+  props: {
+    appName: String,
+    time: String,
+  },
+  components: {
+    Layout,
+    Link,
+  },
+};
 </script>

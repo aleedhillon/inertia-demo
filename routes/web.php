@@ -18,10 +18,13 @@ use Inertia\Inertia;
 Route::get('/', WelcomeController::class);
 
 Route::get('/users', function() {
-    sleep(3);
     return Inertia::render('Users');
 });
 
 Route::get('/settings', function() {
     return Inertia::render('Settings');
+});
+
+Route::post('logout', function() {
+    dd(request()->all());
 });

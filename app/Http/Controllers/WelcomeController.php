@@ -15,6 +15,8 @@ class WelcomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return Inertia::render('Welcome');
+        return Inertia::render('Welcome', [
+            'time' => now()->toTimeString()
+        ]);
     }
 }

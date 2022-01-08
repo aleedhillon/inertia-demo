@@ -1,14 +1,15 @@
 <template>
-    <h1>Users</h1>
-    <Nav></Nav>
+    <layout>
+        <h2 class="display-2">Users</h2>
+    </layout>
 </template>
 
 <script>
-import Nav from '../Componets/Nav.vue';
+import Layout from "../Shared/Layout.vue"
 export default {
     name: 'Users',
     components: {
-        Nav
+        Layout
     }
 }
 </script>

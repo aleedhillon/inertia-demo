@@ -1,19 +1,35 @@
 <template>
-    <nav>
-        <ul>
-            <li><Link href="/">Home</Link></li>
-            <li><Link href="/users">Users</Link></li>
-            <li><Link href="/settings">Settings</Link></li>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Inertia Demo</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <NavLink href="/" component="Welcome">Home</NavLink>
+          </li>
+          <li class="nav-item">
+            <NavLink href="/users" component="Users">Users</NavLink>
+          </li>
+          <li class="nav-item">
+            <NavLink href="/settings" component="Settings">Settings</NavLink>
+          </li>
+          <li class="nav-item">
+            <NavBtnLink href="/logout" method="post">Logout</NavBtnLink>
+          </li>
         </ul>
-    </nav>
+      </div>
+    </div>
+  </nav>
 </template>
 
 <script>
-import { Link } from '@inertiajs/inertia-vue3'
+import NavLink from "./NavLink.vue";
+import NavBtnLink from "./NavBtnLink.vue";
 export default {
-    name: 'Nav',
-    components: {
-        Link
-    }
-}
+  name: "Nav",
+  components: {
+    NavLink,
+    NavBtnLink
+  },
+};
 </script>
