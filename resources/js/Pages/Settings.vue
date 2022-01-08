@@ -6,12 +6,6 @@
     </layout>
 </template>
 
-<script>
+<script setup>
 import Layout from "../Shared/Layout.vue"
-export default {
-    name: 'Settings',
-    components: {
-        Layout
-    }
-}
 </script>
