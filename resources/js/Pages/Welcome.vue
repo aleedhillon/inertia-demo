@@ -5,9 +5,7 @@
   <Link class="btn btn-success" href="/" preserve-scroll>Refresh</Link>
 </template>
 <script>
-import Layout from '../Shared/Layout.vue';
 export default {
-  layout: Layout,
   props: {
     appName: String,
     time: String,
