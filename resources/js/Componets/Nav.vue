@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">Inertia Demo</a>
+      <a class="navbar-brand" href="/">{{ appName }}</a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -31,5 +31,10 @@ export default {
     NavLink,
     NavBtnLink
   },
+  computed: {
+    appName() {
+      return this.$page.props.appName;
+    }
+  }
 };
 </script>
