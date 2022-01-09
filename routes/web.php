@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -17,9 +18,7 @@ use Inertia\Inertia;
 
 Route::get('/', WelcomeController::class);
 
-Route::get('/users', function() {
-    return Inertia::render('Users');
-});
+Route::get('/users', UserController::class);
 
 Route::get('/settings', function() {
     return Inertia::render('Settings');
