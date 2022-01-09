@@ -16,15 +16,19 @@ class UserController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $users = User::paginate(18, [
-            'id',
-            'name',
-            'email',
-            'created_at'
-        ]);
+        $users = User::query()
+            ->when($request->query('q'), function ($query, $name) {
+                return $query->where('name', 'LIKE', "%{$name}%");
+            })->paginate(9, [
+                'id',
+                'name',
+                'email',
+                'created_at'
+            ])->withQueryString();
 
         return Inertia::render('Users', [
-            'users' => $users
+            'users' => $users,
+            'filters' => $request->only('q')
         ]);
     }
 }

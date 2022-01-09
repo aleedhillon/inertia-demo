@@ -11,6 +11,11 @@
 
   <div class="container">
     <div class="row">
+      <div class="col-md-6 offset-3">
+        <input type="text" class="form-control" v-model="search" />
+      </div>
+    </div>
+    <div class="row">
       <div class="col-md-4 my-3" v-for="user in users.data" :key="user.id">
         <div class="card">
           <div class="card-body">
@@ -25,9 +30,34 @@
   </div>
 </template>
 
-<script setup>
-import Pagination from '../Shared/Pagination.vue';
-defineProps({
-  users: Object,
-});
+<script>
+import Pagination from "../Shared/Pagination.vue";
+export default {
+  components: {
+    Pagination,
+  },
+  props: {
+    users: Object,
+    filters: Object,
+  },
+  data() {
+    return {
+      search: this.filters.q,
+    };
+  },
+  watch: {
+    search(value) {
+      this.$inertia.get(
+        "/users",
+        {
+          q: value,
+        },
+        {
+          preserveState: true,
+          replace: true,
+        }
+      );
+    },
+  },
+};
 </script>

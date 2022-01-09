@@ -3,6 +3,9 @@ import { createInertiaApp, Head, Link } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 import Layout from './Shared/Layout.vue';
 import 'bootstrap';
+import loadsh from 'lodash';
+
+window._ = loadsh;
 
 const app = createInertiaApp({
     resolve: async name => {
