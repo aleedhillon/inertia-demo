@@ -16,9 +16,11 @@ class UserController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $users = User::all([
+        $users = User::paginate(18, [
             'id',
-            'name'
+            'name',
+            'email',
+            'created_at'
         ]);
 
         return Inertia::render('Users', [

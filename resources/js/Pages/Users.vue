@@ -10,16 +10,24 @@
   <h2 class="display-2">Users</h2>
 
   <div class="container">
-    <ul class="list-group">
-      <li class="list-group-item" v-for="user in users" :key="user.id">
-        {{ user.name }}
-      </li>
-    </ul>
+    <div class="row">
+      <div class="col-md-4 my-3" v-for="user in users.data" :key="user.id">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ user.name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ user.email }}</h6>
+            <p class="card-text">Joined On: {{ user.created_at }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <Pagination :links="users.links" class="mt-5"></Pagination>
   </div>
 </template>
 
 <script setup>
+import Pagination from '../Shared/Pagination.vue';
 defineProps({
-  users: Array,
+  users: Object,
 });
 </script>
