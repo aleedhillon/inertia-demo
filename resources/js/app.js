@@ -1,5 +1,5 @@
 import { createApp, h } from 'vue';
-import { createInertiaApp, Link } from '@inertiajs/inertia-vue3';
+import { createInertiaApp, Head, Link } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 import Layout from './Shared/Layout.vue';
 import 'bootstrap';
@@ -18,8 +18,10 @@ const app = createInertiaApp({
         })
         .use(plugin)
         .component('Link', Link)
+        .component('Head', Head)
         .mount(el);
-    }
+    },
+    title: title => `Inertia App | ${title}`
 });
 
 InertiaProgress.init({

@@ -6,7 +6,6 @@
 
 <script>
 export default {
-    name: 'NavLink',
     props: {
         component: {
             type: String,
