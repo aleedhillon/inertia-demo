@@ -13,9 +13,9 @@
           <li class="nav-item">
             <NavLink href="/settings" component="Settings">Settings</NavLink>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <NavBtnLink href="/logout" method="post">Logout</NavBtnLink>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>

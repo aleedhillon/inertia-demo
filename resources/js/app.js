@@ -9,7 +9,9 @@ window._ = loadsh;
 
 const app = createInertiaApp({
     resolve: async name => {
-        let page = (await import(`./Pages/${name}`)).default;
+        // let page = (await import(`./Pages/${name}`)).default;
+
+        let page = require(`./Pages/${name}`).default;
 
         page.layout ??= Layout;
 
