@@ -18,7 +18,9 @@ use Inertia\Inertia;
 
 Route::get('/', WelcomeController::class);
 
-Route::get('/users', UserController::class);
+Route::get('/users', [UserController::class, 'index']);
+Route::get('/users/create', [UserController::class, 'create']);
+Route::post('/users', [UserController::class, 'post']);
 
 Route::get('/settings', function() {
     return Inertia::render('Settings');

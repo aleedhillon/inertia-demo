@@ -10,6 +10,7 @@
   <h2 class="display-2">Users</h2>
 
   <div class="container">
+    <Link class="btn btn-primary" href="/users/create">Create Users</Link>
     <div class="row">
       <div class="col-md-6 offset-3">
         <input type="text" class="form-control" v-model="search" placeholder="search users..." />

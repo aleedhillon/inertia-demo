@@ -4,17 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Inertia\Inertia;
 
 class UserController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function __invoke(Request $request)
+    public function index(Request $request)
     {
         $users = User::query()
             ->when($request->query('q'), function ($query, $name) {
@@ -30,5 +25,23 @@ class UserController extends Controller
             'users' => $users,
             'filters' => $request->only('q')
         ]);
+    }
+
+    public function create()
+    {
+        return Inertia::render('UsersCreate');
+    }
+
+    public function post(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|max:255|email|unique:users',
+            'password' => 'required|string|max:255'
+        ]);
+
+        User::create($validated);
+
+        return redirect('/users');
     }
 }
