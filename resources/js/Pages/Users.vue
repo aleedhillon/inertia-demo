@@ -12,7 +12,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-3">
-        <input type="text" class="form-control" v-model="search" />
+        <input type="text" class="form-control" v-model="search" placeholder="search users..." />
       </div>
     </div>
     <div class="row">
