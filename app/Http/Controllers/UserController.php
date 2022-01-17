@@ -12,6 +12,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $users = User::query()
+            ->latest()
             ->when($request->query('q'), function ($query, $name) {
                 return $query->where('name', 'LIKE', "%{$name}%");
             })->paginate(9, [

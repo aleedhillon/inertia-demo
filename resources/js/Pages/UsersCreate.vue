@@ -6,7 +6,12 @@
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-4 offset-4">
-        <form @submit.prevent="createUser" class="needs-validation" :class="{ 'was-validated': wasValidated }" novalidate>
+        <form
+          @submit.prevent="createUser"
+          class="needs-validation"
+          :class="{ 'was-validated': wasValidated }"
+          novalidate
+        >
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input
@@ -20,7 +25,9 @@
               @input="delete errors.name"
               required
             />
-            <div class="invalid-feedback">{{ errors.name || 'Name is required' }}</div>
+            <div class="invalid-feedback">
+              {{ errors.name || "Name is required" }}
+            </div>
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
@@ -35,7 +42,9 @@
               @input="delete errors.email"
               required
             />
-            <div class="invalid-feedback">{{ errors.email || "Email is required" }}</div>
+            <div class="invalid-feedback">
+              {{ errors.email || "Email is required" }}
+            </div>
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
@@ -48,10 +57,17 @@
               @input="delete errors.password"
               required
             />
-            <div class="invalid-feedback">{{ errors.password || "Password is required" }}</div>
+            <div class="invalid-feedback">
+              {{ errors.password || "Password is required" }}
+            </div>
           </div>
           <div class="mb-3">
-            <input type="submit" value="Create" class="btn btn-success" />
+            <input
+              type="submit"
+              value="Create"
+              class="btn btn-success"
+              :disabled="form.processing"
+            />
           </div>
         </form>
       </div>
@@ -66,18 +82,18 @@ export default {
   },
   data() {
     return {
-      form: {
+      form: this.$inertia.form({
         name: "",
         email: "",
         password: "",
-      },
-      wasValidated: false
+      }),
+      wasValidated: false,
     };
   },
   methods: {
     createUser(e) {
       if (e.target.checkValidity()) {
-        this.$inertia.post("/users", this.form);
+        this.form.post("/users");
         this.wasValidated = false;
       } else {
         this.wasValidated = true;
