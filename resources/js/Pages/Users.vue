@@ -13,7 +13,12 @@
     <Link class="btn btn-primary" href="/users/create">Create Users</Link>
     <div class="row">
       <div class="col-md-6 offset-3">
-        <input type="text" class="form-control" v-model="search" placeholder="search users..." />
+        <input
+          type="text"
+          class="form-control"
+          v-model="search"
+          placeholder="search users..."
+        />
       </div>
     </div>
     <div class="row">
@@ -33,6 +38,7 @@
 
 <script>
 import Pagination from "../Shared/Pagination.vue";
+import debounce from "lodash/debounce";
 export default {
   components: {
     Pagination,
@@ -47,7 +53,8 @@ export default {
     };
   },
   watch: {
-    search(value) {
+    search: debounce(function (value) {
+      console.log('user is being searched...');
       this.$inertia.get(
         "/users",
         {
@@ -58,7 +65,7 @@ export default {
           replace: true,
         }
       );
-    },
+    }, 500),
   },
 };
 </script>

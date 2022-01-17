@@ -13,8 +13,9 @@ class UserController extends Controller
     {
         $users = User::query()
             ->latest()
-            ->when($request->query('q'), function ($query, $name) {
-                return $query->where('name', 'LIKE', "%{$name}%");
+            ->when($request->query('q'), function ($query, $q) {
+                return $query->where('name', 'LIKE', "%{$q}%")
+                    ->orWhere('email', 'LIKE', "%{$q}%");
             })->paginate(9, [
                 'id',
                 'name',
