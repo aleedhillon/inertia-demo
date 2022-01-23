@@ -13,9 +13,9 @@
           <li class="nav-item">
             <NavLink href="/settings" component="Settings">Settings</NavLink>
           </li>
-          <!-- <li class="nav-item">
+          <li class="nav-item" v-if="isAuthenticated">
             <NavBtnLink href="/logout" method="post">Logout</NavBtnLink>
-          </li> -->
+          </li>
         </ul>
       </div>
     </div>
@@ -27,6 +27,9 @@ import NavLink from "./NavLink.vue";
 import NavBtnLink from "./NavBtnLink.vue";
 export default {
   name: "Nav",
+  props: {
+    isAuthenticated: Boolean
+  },
   components: {
     NavLink,
     NavBtnLink

@@ -8,7 +8,7 @@
     />
   </Head>
   <div class="container">
-    <Nav></Nav>
+    <Nav :isAuthenticated="isAuthenticated"></Nav>
     <slot />
   </div>
 </template>
@@ -17,6 +17,9 @@
 import Nav from "../Componets/Nav.vue";
 export default {
   name: "Layout",
+  props: {
+    isAuthenticated: Boolean
+  },
   components: {
     Nav,
   },

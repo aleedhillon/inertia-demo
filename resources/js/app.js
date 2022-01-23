@@ -13,7 +13,9 @@ const app = createInertiaApp({
 
         let page = require(`./Pages/${name}`).default;
 
-        page.layout ??= Layout;
+        if (page.layout === undefined) {
+            page.layout = Layout;
+        }
 
         return page;
     },
@@ -21,10 +23,10 @@ const app = createInertiaApp({
         createApp({
             render: () => h(App, props)
         })
-        .use(plugin)
-        .component('Link', Link)
-        .component('Head', Head)
-        .mount(el);
+            .use(plugin)
+            .component('Link', Link)
+            .component('Head', Head)
+            .mount(el);
     },
     title: title => `Inertia App | ${title}`
 });
